@@ -1,34 +1,29 @@
 import Tabs, { Tab } from "react-best-tabs";
 import "react-best-tabs/dist/index.css";
-import Account from "../components/user/Account";
-import Preference from "../components/user/Preference";
-import UpdatePassword from "../components/user/UpdatePassword";
+import Preference from "../components/user/Preference.jsx";
+import UpdatePassword from "../components/user/UpdatePassword.jsx";
+import Account from "../components/user/Account.jsx";
 
 const ProfilePage = () => {
   return (
     <>
       <div className="mx-16">
-        <Tabs
-          activeTab="1"
-          className="mt-6"
-          activityClassName="bg-success"
-        >
+        <Tabs activeTab={0} className="mt-6" activityClassName="bg-success">
           <Tab
             title="Account"
-            class="text-base text-white font-semibold tracking-tight border-b pb-2"
+            className="text-base text-white font-semibold tracking-tight border-b pb-2"
           >
             <Account />
           </Tab>
           <Tab
             title="Preferences"
-            class="text-base text-white font-semibold tracking-tight border-b pb-2"
+            className="text-base text-white font-semibold tracking-tight border-b pb-2"
           >
-            <br />
             <Preference />
           </Tab>
           <Tab
             title="Update Password"
-            class="text-base text-white font-semibold tracking-tight border-b pb-2"
+            className="text-base text-white font-semibold tracking-tight border-b pb-2"
           >
             <UpdatePassword />
           </Tab>

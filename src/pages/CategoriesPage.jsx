@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const CategoriesPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [languageNames, setLanguageNames] = useState([]);  
+  const [languageNames, setLanguageNames] = useState([]);
   const { data: categoriesData, isLoading, error } = useGetCategoriesQuery();
   const { userData } = useSelector((state) => state.auth);
   const [updateLanguageAPI, { isLoading: languageUpdateLoading }] =
@@ -21,8 +21,6 @@ const CategoriesPage = () => {
     isLoading: isLanguagesLoading,
     error: languagesError,
   } = useGetLanguagesQuery();
-
-
 
   const isLanguageSelected = (languageId) =>
     userData.languages && userData.languages.includes(languageId);
@@ -47,7 +45,7 @@ const CategoriesPage = () => {
       const selectedLanguageNames = languages
         .filter((language) => userData.languages.includes(language._id))
         .map((item) => item.name);
-  
+
       setLanguageNames(selectedLanguageNames);
     }
   }, [languages, userData.languages]);
