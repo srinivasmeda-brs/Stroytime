@@ -14,12 +14,19 @@ const EmailVerifyPage = () => {
 
   useEffect(() => {
     if (data) {
-      setMessage(data); // If the response is successful, set the message
+      if (typeof data === "string") {
+        setMessage(data);
+      } else {
+        // Otherwise, handle any unexpected data format
+        setMessage("Unexpected response received. Please try again.");
+      }
+
+      // Redirect after a delay to allow the user to see the message
       setTimeout(() => {
-        navigate("/login"); // Redirect to login page after successful verification
-      }, 3000); // Optional: Delay redirect so user can see the success message
+        navigate("/login");
+      }, 1000); // Optional: Delay redirect so user can see the success message
     } else if (error) {
-      setMessage("An error occurred. Please try again later."); // Handle error messages
+      setMessage("An error occurred. Please try again later.");
     }
   }, [data, error, navigate]);
 
