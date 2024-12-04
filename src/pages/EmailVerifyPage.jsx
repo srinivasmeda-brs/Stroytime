@@ -12,15 +12,15 @@ const EmailVerifyPage = () => {
   });
 
   useEffect(() => {
+    console.log("API Response:", data); // Log the data to check if the response is as expected
     if (data) {
       if (data.status === "success") {
-        setMessage(data.message);
-
+        setMessage(data.message); // Set the success message
         setTimeout(() => {
-          navigate("/login");
-        }, 1000); // Delay redirect so user can see the success message
+          navigate("/login"); // Redirect after a small delay
+        }, 3000);
       } else if (data.status === "error") {
-        setMessage(data.message);
+        setMessage(data.message); // Set the error message
       }
     } else if (error) {
       setMessage("An error occurred. Please try again later.");
