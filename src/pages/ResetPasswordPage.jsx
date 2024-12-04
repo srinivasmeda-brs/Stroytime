@@ -32,8 +32,13 @@ const ResetPasswordPage = () => {
       resetForm();
       navigate("/login", { replace: true });
       toast.success(response.message);
-    } catch {
-      toast.error(error?.data?.message || error.error);
+    } catch (error) {
+      toast.error(
+        error?.data?.message ||
+          error?.message ||
+          error?.error ||
+          "An error occurred"
+      );
     }
   };
 
