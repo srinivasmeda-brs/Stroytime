@@ -3,28 +3,25 @@ import { useEffect, useState } from "react";
 import { useVerifyEmailAPIQuery } from "../store/user/userApiSlice"; // Assuming you create an API slice to handle this
 
 const EmailVerifyPage = () => {
-  const { verifytoken } = useParams(); // Getting the verify token from the URL
-  const navigate = useNavigate(); // For redirection
-  const [message, setMessage] = useState(""); // To display messages to the user
+  const { verifytoken } = useParams();
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
-  // Make the API call to verify the email using the token
   const { data, isLoading, error } = useVerifyEmailAPIQuery(verifytoken, {
     skip: !verifytoken, // Only call the API if token is available
   });
 
   useEffect(() => {
     if (data) {
-      if (typeof data === "string") {
-        setMessage(data);
-      } else {
-        // Otherwise, handle any unexpected data format
-        setMessage("Unexpected response received. Please try again.");
-      }
+      if (data.status === "success") {
+        setMessage(data.message);
 
-      // Redirect after a delay to allow the user to see the message
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000); // Optional: Delay redirect so user can see the success message
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000); // Delay redirect so user can see the success message
+      } else if (data.status === "error") {
+        setMessage(data.message);
+      }
     } else if (error) {
       setMessage("An error occurred. Please try again later.");
     }
