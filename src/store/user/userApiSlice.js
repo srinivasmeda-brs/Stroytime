@@ -18,12 +18,12 @@ export const userAPISlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    verifyEmailAPI: builder.query({
-      query: (verifyToken) => ({
-        url: `${USER_ENDPOINT}/verifyEmail/${verifyToken}`,
-        method: "GET",
-      }),
-    }),
+    // verifyEmailAPI: builder.query({
+    //   query: (verifyToken) => ({
+    //     url: `${USER_ENDPOINT}/verifyEmail/${verifyToken}`,
+    //     method: "GET",
+    //   }),
+    // }),
 
     getUserProfileAPI: builder.query({
       query: () => ({
@@ -102,7 +102,7 @@ export const userAPISlice = apiSlice.injectEndpoints({
 export const {
   useLoginAPIMutation,
   useRegisterAPIMutation,
-  useVerifyEmailAPIQuery,
+  // useVerifyEmailAPIQuery,
   useGetUserProfileAPIQuery,
   useUpdateUserProfileAPIMutation,
   useUpdateLanguageAPIMutation,

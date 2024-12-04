@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <RegisterPage /> },
       { path: "/forgotpassword", element: <ForgotPasswordPage /> },
       { path: "/resetpassword/:token", element: <ResetPasswordPage /> },
-      { path: "/verifyemail/:verifytoken", element: <EmailVerifyPage /> },
+      { path: "/verifyEmail/:verifytoken", element: <EmailVerifyPage /> },
       {
         element: <ProtectedRoutes />,
         children: [
