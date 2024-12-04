@@ -17,6 +17,14 @@ export const userAPISlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    verifyEmailAPI: builder.query({
+      query: (verifyToken) => ({
+        url: `${USER_ENDPOINT}/verifyEmail/${verifyToken}`,
+        method: "GET",
+      }),
+    }),
+
     getUserProfileAPI: builder.query({
       query: () => ({
         url: `${USER_ENDPOINT}/profile`,
@@ -94,6 +102,7 @@ export const userAPISlice = apiSlice.injectEndpoints({
 export const {
   useLoginAPIMutation,
   useRegisterAPIMutation,
+  useVerifyEmailAPIQuery,
   useGetUserProfileAPIQuery,
   useUpdateUserProfileAPIMutation,
   useUpdateLanguageAPIMutation,
