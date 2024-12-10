@@ -1,29 +1,33 @@
-import { useState, useEffect } from "react";
 import { Link} from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 const EmailVerifyPage = () => {
-  const [verify, setVerify] = useState(""); // Correctly initialize state
-  const url = `https://stroytime-backend.onrender.com/api/users/verifyEmail/:verify_token`; // Replace the placeholder dynamically
+  const { verify_token } = useParams();
+  console.log(verify_token);
 
-  useEffect(() => {
-    const verifyEmail = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
+  // const [verify, setVerify] = useState(""); // Correctly initialize state
+  // const url = `https://stroytime-backend.onrender.com/api/users/verifyEmail/:verify_token`; // Replace the placeholder dynamically
 
-        if (response.status === 200 || response.status === 201) {
-          setVerify("Email Verified! Please login.");
-        } else {
-          setVerify(data.message || "Verification failed. Please try again.");
-        }
-      } catch (error) {
-        setVerify("An error occurred while verifying your email.");
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const verifyEmail = async () => {
+  //     try {
+  //       const response = await fetch(url);
+  //       const data = await response.json();
 
-    verifyEmail(); // Call the async function
-  }, [url]); // Add `url` as a dependency
+  //       if (response.status === 200 || response.status === 201) {
+  //         setVerify("Email Verified! Please login.");
+  //       } else {
+  //         setVerify(data.message || "Verification failed. Please try again.");
+  //       }
+  //     } catch (error) {
+  //       setVerify("An error occurred while verifying your email.");
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   verifyEmail(); // Call the async function
+  // }, [url]); // Add `url` as a dependency
 
   return (
     <>
@@ -46,7 +50,7 @@ const EmailVerifyPage = () => {
                 </figure>
               </div>
               <p className="text-2xl font-semibold md:text-3xl mb-3">
-                {verify}
+                Email verify
               </p>
 
               <Link
