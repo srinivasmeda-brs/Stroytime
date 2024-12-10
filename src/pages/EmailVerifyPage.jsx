@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 
 const EmailVerifyPage = () => {
-  const { verify_token } = useParams();
-  console.log(verify_token);
+  const { verifytoken } = useParams();
+  console.log(verifytoken);
 
   // const [verify, setVerify] = useState(""); // Correctly initialize state
   // const url = `https://stroytime-backend.onrender.com/api/users/verifyEmail/:verify_token`; // Replace the placeholder dynamically
