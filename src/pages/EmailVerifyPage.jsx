@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const EmailVerifyPage = () => {
   const [verify, setVerify] = useState(""); // Correctly initialize state
-  const { verify_token } = useParams(); // Extract the token from the route parameters
-  const url = `https://stroytime-backend.onrender.com/api/users/verifyEmail/${verify_token}`; // Replace the placeholder dynamically
+  const url = `https://stroytime-backend.onrender.com/api/users/verifyEmail/:verify_token`; // Replace the placeholder dynamically
 
   useEffect(() => {
     const verifyEmail = async () => {
